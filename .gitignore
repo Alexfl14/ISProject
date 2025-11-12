@@ -71,9 +71,8 @@ TestResults/
 /lib/
 
 # CMake files
-./CMakeLists.txt
-CMakeFiles/
-CMakeCache.txt
+**/CMakeFiles/
+**/CMakeCache.txt
 cmake_install.cmake
 Makefile
 
