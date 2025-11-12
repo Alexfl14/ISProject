@@ -39,3 +39,27 @@
 
 # debug information files
 *.dwo
+
+# Cache/Fișiere temporare Visual Studio
+.vs/
+*.vsidx
+*.suo
+*.user
+*.db
+*.ipch
+
+# Fișiere de compilare și binare (Build)
+[Dd]ebug/
+[Rr]elease/
+*.obj
+*.exe
+*.dll
+*.ilk
+*.pdb
+
+# Fișiere Visual Studio Solution/Project
+# *.vcxproj.user
+# *.sln.cache
+
+# Adaugă folderul de output al lui GTest/GMock dacă este separat
+TestResults/
