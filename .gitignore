@@ -63,3 +63,29 @@
 
 # Adaugă folderul de output al lui GTest/GMock dacă este separat
 TestResults/
+
+# Build directories
+/build/
+/out/
+/bin/
+/lib/
+
+# CMake files
+./CMakeLists.txt
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# vcpkg build artifacts
+vcpkg_installed/
+vcpkg_downloads/
