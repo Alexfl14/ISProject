@@ -10,6 +10,7 @@
 
 class GameObject: public IGameObject {
 public:
+    GameObject() : _position(0, 0) {}
     GameObject(const Position position): _position(position){}
 
     Position getPosition() const override;
@@ -17,6 +18,5 @@ public:
 protected:
     Position _position;
 };
-
 
 #endif //ISPROJECT_GAMEOBJECT_H

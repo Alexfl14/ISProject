@@ -9,8 +9,10 @@
 
 class IGameSubject {
 public:
-    virtual void addObserver(IGameObserver* observer);
-    virtual void removeObserver(IGameObserver* observer);
-    virtual void notify(EGameEvent event);
+    virtual ~IGameSubject() = default;
+    virtual void addObserver(IGameObserver* observer) = 0;
+    virtual void removeObserver(IGameObserver* observer) = 0;
+    virtual void notify(EGameEvent event) = 0;
 };
+
 #endif //ISPROJECT_IGAMESUBJECT_H

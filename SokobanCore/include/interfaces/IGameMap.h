@@ -4,8 +4,11 @@
 
 #ifndef SOKOBANGAME_IGAMEMAP_H
 #define SOKOBANGAME_IGAMEMAP_H
+
 class IGameMap {
 public:
-    virtual void load(int levelNumber);
+    virtual ~IGameMap() = default;
+    virtual void load(int levelNumber) = 0;
 };
+
 #endif //SOKOBANGAME_IGAMEMAP_H

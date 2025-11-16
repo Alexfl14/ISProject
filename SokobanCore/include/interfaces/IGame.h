@@ -14,15 +14,17 @@
 
 class IGame : public IGameSubject{
 public:
-    virtual void loadLevel(int levelNumber);
-    virtual void movePlayer(EFacing direction);
-    virtual void restartLevel();
-    virtual EGameState getCurrentState();
-    virtual int getLevelWidth();
-    virtual int getLevelLength();
-    virtual ETileType getTileAt(Position position);
-    virtual Position getPlayerPosition();
-    virtual const std::vector<Position>& getBoxPositions();
-    virtual int getMoveCount();
+    virtual ~IGame() = default;
+    virtual void loadLevel(int levelNumber) = 0;
+    virtual void movePlayer(EFacing direction) = 0;
+    virtual void restartLevel() = 0;
+    virtual EGameState getCurrentState() = 0;
+    virtual int getLevelWidth() = 0;
+    virtual int getLevelLength() = 0;
+    virtual ETileType getTileAt(Position position) = 0;
+    virtual Position getPlayerPosition() = 0;
+    virtual const std::vector<Position>& getBoxPositions() = 0;
+    virtual int getMoveCount() = 0;
 };
+
 #endif //ISPROJECT_IGAME_H

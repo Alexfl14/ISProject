@@ -5,7 +5,7 @@
 #ifndef ISPROJECT_GAME_H
 #define ISPROJECT_GAME_H
 #include "Interfaces/IGame.h"
-#include "Interfaces/IGameMap.h"
+#include "GameMap.h"
 #include <vector>
 #include "Interfaces/IGameObserver.h"
 #include "Box.h"
@@ -28,14 +28,20 @@ public:
     Position getPlayerPosition() override;
     const std::vector<Position> & getBoxPositions() override;
     int getMoveCount() override;
+    
 private:
+    bool isPositionWalkable(const Position& pos) const;
+    bool isBoxAt(const Position& pos) const;
+    Box* getBoxAt(const Position& pos);
+    Position getNextPosition(const Position& current, EFacing direction) const;
+    
     std::vector<IGameObserver*> _observers;
-    IGameMap _currentMap;
+    GameMap _currentMap;
     Player _player;
     std::vector<Box> _boxes;
-    int _moveCounts;
+    int _moveCount;
+    int _currentLevel;
     EGameState _gameState;
 };
-
 
 #endif //ISPROJECT_GAME_H

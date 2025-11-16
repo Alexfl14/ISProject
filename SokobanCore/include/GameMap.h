@@ -8,13 +8,24 @@
 #include "Tile.h"
 #include "Position.h"
 #include "Interfaces/IGameMap.h"
-class GameMap: IGameMap{
+
+class GameMap: public IGameMap{
 public:
+    GameMap();
     void load(int levelNumber) override;
+    
+    int getWidth() const;
+    int getHeight() const;
+    ETileType getTileAt(int row, int col) const;
+    Position getPlayerStart() const;
+    std::vector<Position> getBoxPositions() const;
+    
 private:
     std::vector<std::vector<Tile>> _grid;
     Position _playerStart;
+    std::vector<Position> _boxPositions;
+    int _width;
+    int _height;
 };
-
 
 #endif //ISPROJECT_GAMEMAP_H

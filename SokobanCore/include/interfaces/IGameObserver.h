@@ -8,6 +8,8 @@
 
 class IGameObserver {
 public:
-    virtual void onNotify(EGameEvent event);
+    virtual ~IGameObserver() = default;
+    virtual void onNotify(EGameEvent event) = 0;
 };
+
 #endif //SOKOBANGAME_IGAMEOBSERVER_H

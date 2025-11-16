@@ -6,10 +6,10 @@
 #define SOKOBANGAME_BOX_H
 #include "GameObject.h"
 
-
 class Box : public GameObject{
-
+public:
+    Box() : GameObject(Position(0, 0)) {}
+    Box(const Position& position) : GameObject(position) {}
 };
-
 
 #endif //SOKOBANGAME_BOX_H

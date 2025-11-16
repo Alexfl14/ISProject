@@ -43,6 +43,14 @@ if(BUILD_TESTS)
     add_subdirectory(SokobanTests)
 endif()
 
+# Copy levels.json to output directory
+add_custom_target(copy_levels ALL
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        ${CMAKE_SOURCE_DIR}/levels.json
+        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/levels.json
+    COMMENT "Copying levels.json to build directory"
+)
+
 # Print configuration summary
 message(STATUS "====================================")
 message(STATUS "Sokoban Project Configuration")
