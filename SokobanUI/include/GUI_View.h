@@ -6,17 +6,69 @@
 #define SOKOBANGAME_GUI_VIEW_H
 
 #include <interfaces/IGame.h>
+#include <interfaces/IGameObserver.h>
 #include <enums/EGameEvent.h>
+#include <raylib.h>
+#include <string>
 
-class GUI_View{
+/**
+ * GUI_View - Observer Pattern Implementation
+ * Observes the Game (Subject) and updates the UI accordingly
+ */
+class GUI_View : public IGameObserver {
 public:
-    GUI_View();
-    void onNotify(EGameEvent event);
+    explicit GUI_View(IGame* game);
+    ~GUI_View();
+    
+    // Initialize raylib window
+    void initialize(int screenWidth, int screenHeight);
+    
+    // Observer Pattern - called by Subject (Game) when state changes
+    void onNotify(EGameEvent event) override;
+    
+    // Main rendering function
     void render();
-    //void handleInputKey(KeyCode key);
-private:
-    IGame* gameLogic;
-};
+    
+    // Handle keyboard input
+    void handleInput();
+    
+    // Check if window should close
+    bool shouldClose() const;
+    
+    // Cleanup resources
+    void cleanup();
 
+private:
+    IGame* _gameLogic;  // Reference to the Subject (Game)
+    
+    // Window properties
+    int _screenWidth;
+    int _screenHeight;
+    int _tileSize;
+    
+    // Grid offset for centering
+    int _offsetX;
+    int _offsetY;
+    
+    // Colors matching the image
+    Color _wallColor;
+    Color _floorColor;
+    Color _targetColor;
+    Color _boxColor;
+    Color _boxOnTargetColor;
+    Color _playerColor;
+    
+    // UI state
+    std::string _statusMessage;
+    bool _isInitialized;
+    
+    // Helper methods
+    void drawTile(int row, int col, ETileType tileType);
+    void drawPlayer(Position playerPos);
+    void drawBox(Position boxPos, bool onTarget);
+    void drawUI();
+    void calculateOffsets();
+    Vector2 getTileScreenPosition(int row, int col) const;
+};
 
 #endif //SOKOBANGAME_GUI_VIEW_H

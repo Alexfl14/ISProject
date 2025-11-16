@@ -37,6 +37,14 @@ add_custom_command(TARGET SokobanUI POST_BUILD
         COMMENT "Copying assets to build directory"
 )
 
+# Copy levels.json to build directory
+add_custom_command(TARGET SokobanUI POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        ${CMAKE_SOURCE_DIR}/levels.json
+        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/levels.json
+        COMMENT "Copying levels.json to build directory"
+)
+
 # Installation rules
 install(TARGETS SokobanUI
         RUNTIME DESTINATION bin
