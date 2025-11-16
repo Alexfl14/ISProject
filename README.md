@@ -1,0 +1,4 @@
+- Make an environment variable VCPKG_ROOT to the /path/to/vcpkg/
+- Create in root directory of the whole project (at level with this file) a directory called build if is not already done
+- Use 'cd build' to enter that directory 
+- Use 'cmake ..'

@@ -1,0 +1,13 @@
+//
+// Created by fafa on 12.11.2025.
+//
+
+#ifndef SOKOBANGAME_EGAMEEVENT_H
+#define SOKOBANGAME_EGAMEEVENT_H
+enum class EGameEvent {
+    PLAYER_MOVED,
+    BOX_MOVED,
+    LEVEL_RELOADED,
+    LEVEL_WON,
+};
+#endif //SOKOBANGAME_EGAMEEVENT_H

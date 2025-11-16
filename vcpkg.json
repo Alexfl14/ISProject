@@ -1,0 +1,9 @@
+{
+  "name": "sokoban",
+  "version-string": "1.0.0",
+  "dependencies": [
+    "raylib",
+    "nlohmann-json",
+    "gtest"
+  ]
+}
