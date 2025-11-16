@@ -5,15 +5,15 @@
 #ifndef SOKOBANGAME_GUI_VIEW_H
 #define SOKOBANGAME_GUI_VIEW_H
 
-#include <Interfaces/IGame.h>
-#include <Enums/EGameEvent.h>
+#include <interfaces/IGame.h>
+#include <enums/EGameEvent.h>
 
 class GUI_View{
 public:
     GUI_View();
     void onNotify(EGameEvent event);
     void render();
-    void handleInputKey(KeyCode key);
+    //void handleInputKey(KeyCode key);
 private:
     IGame* gameLogic;
 };

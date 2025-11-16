@@ -4,7 +4,7 @@
 
 #ifndef SOKOBANGAME_TILE_H
 #define SOKOBANGAME_TILE_H
-#include "../Enums/ETileType.h"
+#include "enums/ETileType.h"
 struct Tile {
 public:
     Tile(const ETileType tileType): _tileType(tileType) {}

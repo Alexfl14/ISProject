@@ -7,7 +7,7 @@ list(APPEND UI_SOURCES ${UI_HEADERS_FOR_COMPILATION})
 # SokobanUI executable
 add_executable(SokobanUI
         ${UI_SOURCES}
-)
+ "main.cpp")
 
 # Link dependencies
 target_link_libraries(SokobanUI

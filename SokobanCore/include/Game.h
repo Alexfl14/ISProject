@@ -8,8 +8,8 @@
 #include "Interfaces/IGameMap.h"
 #include <vector>
 #include "Interfaces/IGameObserver.h"
-#include "Objects/Box.h"
-#include "Objects/Player.h"
+#include "Box.h"
+#include "Player.h"
 
 class Game: public IGame{
 public:
