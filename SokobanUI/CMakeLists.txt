@@ -10,11 +10,20 @@ add_executable(SokobanUI
  "main.cpp")
 
 # Link dependencies
+if(UNIX AND NOT APPLE)
 target_link_libraries(SokobanUI
         PRIVATE
         Sokoban::Core
         raylib
+        glfw
 )
+else()
+target_link_libraries(SokobanUI
+		PRIVATE
+		Sokoban::Core
+		raylib
+)
+endif()
 
 # Include directories
 target_include_directories(SokobanUI

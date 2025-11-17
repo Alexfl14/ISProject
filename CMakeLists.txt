@@ -27,9 +27,14 @@ option(BUILD_TESTS "Build tests" ON)
 option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 
 # Find packages
+if(UNIX AND NOT APPLE)
 find_package(raylib CONFIG REQUIRED)
+find_package(glfw3 CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
-
+else()
+find_package(raylib REQUIRED)
+find_package(nlohmann_json REQUIRED)
+endif()
 if(BUILD_TESTS)
     find_package(GTest CONFIG REQUIRED)
     enable_testing()
