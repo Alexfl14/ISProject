@@ -61,6 +61,7 @@ private:
     // UI state
     std::string _statusMessage;
     bool _isInitialized;
+    int _currentLevel;
     
     // Helper methods
     void drawTile(int row, int col, ETileType tileType);
@@ -68,6 +69,7 @@ private:
     void drawBox(Position boxPos, bool onTarget);
     void drawUI();
     void calculateOffsets();
+    void loadNextLevel();
     Vector2 getTileScreenPosition(int row, int col) const;
 };
 

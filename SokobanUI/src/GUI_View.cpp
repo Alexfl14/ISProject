@@ -14,6 +14,7 @@ GUI_View::GUI_View(IGame* game)
       _offsetX(0),
       _offsetY(0),
       _isInitialized(false),
+      _currentLevel(1),
       _statusMessage("Use Arrow Keys to move. R to restart.")
 {
     // Define colors matching the Sokoban image
@@ -219,17 +220,21 @@ void GUI_View::drawUI() {
     // Top status bar
     DrawRectangle(0, 0, _screenWidth, 40, Color{30, 30, 30, 255});
     
+    // Level indicator
+    std::string levelText = "Level: " + std::to_string(_currentLevel) + "/10";
+    DrawText(levelText.c_str(), 10, 10, 20, CYAN);
+    
     // Move counter
     int moveCount = _gameLogic->getMoveCount();
     std::string movesText = "Moves: " + std::to_string(moveCount);
-    DrawText(movesText.c_str(), 10, 10, 20, WHITE);
+    DrawText(movesText.c_str(), 150, 10, 20, WHITE);
     
     // Status message
-    DrawText(_statusMessage.c_str(), 200, 10, 20, YELLOW);
+    DrawText(_statusMessage.c_str(), 300, 10, 20, YELLOW);
     
     // Bottom instruction bar
     DrawRectangle(0, _screenHeight - 40, _screenWidth, 40, Color{30, 30, 30, 255});
-    DrawText("Arrow Keys: Move | R: Restart | ESC: Exit", 10, _screenHeight - 30, 20, LIGHTGRAY);
+    DrawText("Arrow/WASD: Move | R: Restart | N: Next Level | ESC: Exit", 10, _screenHeight - 30, 20, LIGHTGRAY);
 }
 
 void GUI_View::handleInput() {
@@ -252,6 +257,11 @@ void GUI_View::handleInput() {
     // Restart level
     if (IsKeyPressed(KEY_R)) {
         _gameLogic->restartLevel();
+    }
+    
+    // Next level
+    if (IsKeyPressed(KEY_N)) {
+        loadNextLevel();
     }
 }
 
@@ -278,6 +288,43 @@ void GUI_View::calculateOffsets() {
     
     _offsetX = (_screenWidth - totalWidth) / 2;
     _offsetY = (_screenHeight - totalHeight) / 2 + 20; // +20 for top bar
+}
+
+void GUI_View::loadNextLevel() {
+    if (!_gameLogic) return;
+    
+    // Increment level (max 10 levels)
+    _currentLevel++;
+    
+    if (_currentLevel > 10) {
+        _currentLevel = 10;
+        _statusMessage = "You've completed all levels! Congratulations!";
+        std::cout << "All levels completed!\n";
+        return;
+    }
+    
+    try {
+        _gameLogic->loadLevel(_currentLevel);
+        
+        // Recalculate tile size and offsets for new level
+        int mapWidth = _gameLogic->getLevelWidth();
+        int mapHeight = _gameLogic->getLevelLength();
+        
+        int maxTileWidth = (_screenWidth - 100) / mapWidth;
+        int maxTileHeight = (_screenHeight - 150) / mapHeight;
+        _tileSize = std::min(maxTileWidth, maxTileHeight);
+        _tileSize = std::max(32, std::min(_tileSize, 64));
+        
+        calculateOffsets();
+        
+        _statusMessage = "Level " + std::to_string(_currentLevel) + " loaded!";
+        std::cout << "Loaded level " << _currentLevel << "\n";
+        
+    } catch (const std::exception& e) {
+        _statusMessage = "Failed to load level " + std::to_string(_currentLevel);
+        std::cerr << "Error loading level: " << e.what() << "\n";
+        _currentLevel--; // Revert on error
+    }
 }
 
 Vector2 GUI_View::getTileScreenPosition(int row, int col) const {
