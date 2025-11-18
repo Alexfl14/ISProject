@@ -4,7 +4,7 @@
 
 #ifndef SOKOBANGAME_IGAMEOBSERVER_H
 #define SOKOBANGAME_IGAMEOBSERVER_H
-#include "Enums/EGameEvent.h"
+#include "enums/EGameEvent.h"
 
 class IGameObserver {
 public:

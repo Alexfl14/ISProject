@@ -22,7 +22,7 @@ int main()
         std::cout << "Game (Subject) created\n";
         
         // Load first level
-        game.loadLevel(2);
+        game.loadLevel(1);
         std::cout << "Level 1 loaded\n";
         
         // Create the Observer (GUI View)

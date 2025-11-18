@@ -7,7 +7,7 @@
 #include <vector>
 #include "Tile.h"
 #include "Position.h"
-#include "Interfaces/IGameMap.h"
+#include "interfaces/IGameMap.h"
 
 class GameMap: public IGameMap{
 public:

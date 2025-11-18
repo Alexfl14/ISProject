@@ -5,7 +5,7 @@
 #ifndef ISPROJECT_IGAMESUBJECT_H
 #define ISPROJECT_IGAMESUBJECT_H
 #include "IGameObserver.h"
-#include "Enums/EGameEvent.h"
+#include "enums/EGameEvent.h"
 
 class IGameSubject {
 public:

@@ -5,9 +5,9 @@
 #ifndef ISPROJECT_IGAME_H
 #define ISPROJECT_IGAME_H
 #include "Position.h"
-#include "Enums/EFacing.h"
-#include "Enums/EGameState.h"
-#include "Enums/ETileType.h"
+#include "enums/EFacing.h"
+#include "enums/EGameState.h"
+#include "enums/ETileType.h"
 #include <vector>
 
 #include "IGameSubject.h"

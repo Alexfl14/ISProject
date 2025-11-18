@@ -4,10 +4,10 @@
 
 #ifndef ISPROJECT_GAME_H
 #define ISPROJECT_GAME_H
-#include "Interfaces/IGame.h"
+#include "interfaces/IGame.h"
 #include "GameMap.h"
 #include <vector>
-#include "Interfaces/IGameObserver.h"
+#include "interfaces/IGameObserver.h"
 #include "Box.h"
 #include "Player.h"
 

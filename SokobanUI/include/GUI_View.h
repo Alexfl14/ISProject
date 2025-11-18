@@ -57,7 +57,11 @@ private:
     Color _boxColor;
     Color _boxOnTargetColor;
     Color _playerColor;
-    
+
+    // --- NEW TEXTURES ---
+    Texture2D _carTexture;
+    Texture2D _parkingTexture;
+
     // UI state
     std::string _statusMessage;
     bool _isInitialized;
