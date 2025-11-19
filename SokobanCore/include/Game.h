@@ -1,7 +1,3 @@
-//
-// Created by fafa on 12.11.2025.
-//
-
 #ifndef ISPROJECT_GAME_H
 #define ISPROJECT_GAME_H
 #include "interfaces/IGame.h"

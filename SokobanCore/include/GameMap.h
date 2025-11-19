@@ -1,7 +1,3 @@
-//
-// Created by fafa on 12.11.2025.
-//
-
 #ifndef ISPROJECT_GAMEMAP_H
 #define ISPROJECT_GAMEMAP_H
 #include <vector>

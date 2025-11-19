@@ -1,7 +1,3 @@
-//
-// Created by fafa on 12.11.2025.
-//
-
 #ifndef SOKOBANGAME_POSITION_H
 #define SOKOBANGAME_POSITION_H
 

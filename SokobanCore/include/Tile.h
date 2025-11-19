@@ -1,7 +1,3 @@
-//
-// Created by fafa on 12.11.2025.
-//
-
 #ifndef SOKOBANGAME_TILE_H
 #define SOKOBANGAME_TILE_H
 #include "enums/ETileType.h"
