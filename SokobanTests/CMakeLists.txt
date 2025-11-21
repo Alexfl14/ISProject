@@ -1,47 +1,47 @@
 cmake_minimum_required(VERSION 3.20)
+project(SokobanTests)
 
+# 1. Find all source files
 file(GLOB_RECURSE TESTS_SOURCES "src/*.cpp")
 
-# SokobanTests executable
+# 2. Create Executable
 add_executable(SokobanTests 
-        ${TESTS_SOURCES}
+    ${TESTS_SOURCES}
 )
 
-# Link dependencies
+# 3. PRECOMPILED HEADERS (Vital for your pch.h to work)
+# This tells CMake to use src/pch.h for every file in this project
+target_precompile_headers(SokobanTests PRIVATE src/core_tests/pch.h)
+# 4. Link Dependencies
 target_link_libraries(SokobanTests
-        PRIVATE
-        Sokoban::Core
-        GTest::gtest
-        GTest::gtest_main
-        GTest::gmock
+    PRIVATE
+    SokobanCore       # Ensure this matches your Core project name exactly
+    GTest::gtest
+    GTest::gtest_main
+    GTest::gmock
 )
 
-# Include directories
+# 5. Include Directories
 target_include_directories(SokobanTests
-        PRIVATE
-        ${CMAKE_CURRENT_SOURCE_DIR}/include
-        ${CMAKE_SOURCE_DIR}/SokobanUI/include
+    PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_SOURCE_DIR}/SokobanUI/include
 )
 
-# Compiler warnings
+# 6. Compiler Warnings
 if(MSVC)
     target_compile_options(SokobanTests PRIVATE /W4)
 else()
     target_compile_options(SokobanTests PRIVATE -Wall -Wextra -Wpedantic)
 endif()
 
-# Add tests to CTest
+# 7. Register Tests
 include(GoogleTest)
 gtest_discover_tests(SokobanTests
-        WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
-        PROPERTIES
-        LABELS "unit"
+    WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+    PROPERTIES
+    LABELS "unit"
 )
 
-# Copy test data to build directory
-add_custom_command(TARGET SokobanTests POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_CURRENT_SOURCE_DIR}/test_data
-        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/test_data
-        COMMENT "Copying test data to build directory"
-)
+# REMOVED: The add_custom_command for copying test_data
+# Reason: You don't have a test_data folder, and your code generates its own levels.json.
