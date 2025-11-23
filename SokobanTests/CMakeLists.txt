@@ -7,7 +7,7 @@ file(GLOB_RECURSE TESTS_SOURCES "src/*.cpp")
 # 2. Create Executable
 add_executable(SokobanTests 
     ${TESTS_SOURCES}
-)
+ "src/core_tests/PlayerTest.cpp" "src/core_tests/GameTest.cpp" "src/core_tests/PositionTest.cpp" "src/core_tests/TileTest.cpp")
 
 # 3. PRECOMPILED HEADERS (Vital for your pch.h to work)
 # This tells CMake to use src/pch.h for every file in this project
