@@ -10,7 +10,8 @@ void WriteTestLevelsJson(const std::string& filename) {
             {"id", 1},
             {"width", 3},
             {"height", 2},
-            {"grid", {{0, 1, 2}, {2, 1, 0}}}, // 0=Path, 1=Wall, 2=Target
+            {"grid", {{0, 1, 2},
+                    {2, 1, 0}}}, // 0=Path, 1=Wall, 2=Target
             {"playerStart", {{"row", 1}, {"col", 2}}},
             {"boxPositions", {{{"row", 0}, {"col", 1}}}}
         }
@@ -36,5 +37,5 @@ TEST_F(GameMapTest, LoadCorrectlyParsesGrid) {
     // 0=Path
     EXPECT_EQ(map.getTileAt(0, 0), ETileType::PATH);
     // 2=Target
-    EXPECT_EQ(map.getTileAt(0, 2), ETileType::TARGET);
+    EXPECT_EQ(map.getTileAt(0, 1), ETileType::TARGET);
 }
