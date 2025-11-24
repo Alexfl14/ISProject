@@ -9,9 +9,8 @@ add_executable(SokobanTests
     ${TESTS_SOURCES}
  "src/core_tests/PlayerTest.cpp" "src/core_tests/GameTest.cpp" "src/core_tests/PositionTest.cpp" "src/core_tests/TileTest.cpp")
 
-# 3. PRECOMPILED HEADERS (Vital for your pch.h to work)
-# This tells CMake to use src/pch.h for every file in this project
-target_precompile_headers(SokobanTests PRIVATE src/core_tests/pch.h)
+# 3. PRECOMPILED HEADERS (Disabled - causes issues with GTest discovery)
+# target_precompile_headers(SokobanTests PRIVATE src/core_tests/pch.h)
 # 4. Link Dependencies
 target_link_libraries(SokobanTests
     PRIVATE
