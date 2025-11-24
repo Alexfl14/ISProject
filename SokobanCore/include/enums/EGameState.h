@@ -5,4 +5,4 @@ enum class EGameState {
     PLAYING,
     LEVEL_COMPLETED,
 };
-#endif //SOKOBANGAME_EGAMESTATE_H
+#endif

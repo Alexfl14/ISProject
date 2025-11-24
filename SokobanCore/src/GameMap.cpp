@@ -8,7 +8,6 @@ using json = nlohmann::json;
 GameMap::GameMap() : _playerStart(0, 0), _width(0), _height(0) {}
 
 void GameMap::load(int levelNumber) {
-    // Read JSON file
     std::ifstream file("levels.json");
     if (!file.is_open()) {
         throw std::runtime_error("Failed to open levels.json");
@@ -17,18 +16,12 @@ void GameMap::load(int levelNumber) {
     json data;
     file >> data;
     file.close();
-    
-    // Find the level with matching ID
     bool levelFound = false;
     for (const auto& level : data["levels"]) {
         if (level["id"] == levelNumber) {
             levelFound = true;
-            
-            // Load dimensions
             _width = level["width"];
             _height = level["height"];
-            
-            // Load grid
             _grid.clear();
             _grid.resize(_height);
             
@@ -40,13 +33,9 @@ void GameMap::load(int levelNumber) {
                     _grid[row].emplace_back(static_cast<ETileType>(tileValue));
                 }
             }
-            
-            // Load player start position
             const auto& playerStartData = level["playerStart"];
             _playerStart.setRow(playerStartData["row"]);
             _playerStart.setCol(playerStartData["col"]);
-            
-            // Load box positions
             _boxPositions.clear();
             const auto& boxPositionsData = level["boxPositions"];
             for (const auto& boxPos : boxPositionsData) {

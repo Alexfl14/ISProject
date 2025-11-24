@@ -29,16 +29,16 @@ Grafică inspirată din imaginea ta:
 ### 3. **main.cpp** - Game Loop cu Observer Pattern
 
 ```cpp
-Game game;                   // Subject
-GUI_View view(&game);        // Observer
-game.addObserver(&view);     // Register Observer
+Game game;
+GUI_View view(&game);
+game.addObserver(&view);
 
 while (!view.shouldClose()) {
-    view.handleInput();      // Input → Game → notify() → Observer
-    view.render();           // Observer renders current state
+    view.handleInput();
+    view.render();
 }
 
-game.removeObserver(&view);  // Cleanup
+game.removeObserver(&view);
 ```
 
 ### 4. **CMakeLists.txt** - Actualizat

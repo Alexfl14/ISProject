@@ -3,7 +3,7 @@
 
 TEST(PlayerTest, Initialization) {
     Position startPos(3, 4);
-    Player player(startPos); // Assuming constructor takes Position
+    Player player(startPos);
 
     EXPECT_EQ(player.getPosition().getRow(), 3);
     EXPECT_EQ(player.getPosition().getCol(), 4);

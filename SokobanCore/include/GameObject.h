@@ -15,4 +15,4 @@ protected:
     Position _position;
 };
 
-#endif //ISPROJECT_GAMEOBJECT_H
+#endif

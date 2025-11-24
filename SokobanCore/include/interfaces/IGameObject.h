@@ -1,6 +1,4 @@
 //
-// Created by fafa on 12.11.2025.
-//
 
 #ifndef SOKOBANGAME_IGAMEOBJECT_H
 #define SOKOBANGAME_IGAMEOBJECT_H
@@ -14,4 +12,4 @@ public:
     virtual void setPosition(Position position) = 0;
 };
 
-#endif //SOKOBANGAME_IGAMEOBJECT_H
+#endif

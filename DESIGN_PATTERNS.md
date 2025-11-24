@@ -43,24 +43,23 @@ SokobanUI/            # Frontend (implementat)
 1. **Inițializare**:
 
    ```cpp
-   Game game;              // Create Subject
-   GUI_View view(&game);   // Create Observer
-   game.addObserver(&view); // Register Observer
+   Game game;
+   GUI_View view(&game);
+   game.addObserver(&view);
    ```
 
 2. **Notificare**:
 
    ```cpp
-   // User presses arrow key
    view.handleInput()
    → game.movePlayer(direction)
    → game.notify(PLAYER_MOVED)
-   → view.onNotify(PLAYER_MOVED)  // Observer is notified!
+   → view.onNotify(PLAYER_MOVED)
    ```
 
 3. **Cleanup**:
    ```cpp
-   game.removeObserver(&view); // Unregister
+   game.removeObserver(&view);
    ```
 
 ### Beneficiile Observer Pattern

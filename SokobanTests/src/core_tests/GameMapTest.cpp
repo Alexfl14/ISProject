@@ -1,8 +1,6 @@
 #include "pch.h"
 #include "GameMap.h"
 #include "enums/ETileType.h"
-
-// Helper to write JSON 
 void WriteTestLevelsJson(const std::string& filename) {
     nlohmann::json j;
     j["levels"] = {
@@ -11,7 +9,7 @@ void WriteTestLevelsJson(const std::string& filename) {
             {"width", 3},
             {"height", 2},
             {"grid", {{0, 1, 2},
-                    {2, 1, 0}}}, // 0=Path, 1=Wall, 2=Target
+                    {2, 1, 0}}},
             {"playerStart", {{"row", 1}, {"col", 2}}},
             {"boxPositions", {{{"row", 0}, {"col", 1}}}}
         }
@@ -33,9 +31,6 @@ TEST_F(GameMapTest, LoadCorrectlyParsesGrid) {
 
     EXPECT_EQ(map.getWidth(), 3);
     EXPECT_EQ(map.getHeight(), 2);
-
-    // 0=Path
     EXPECT_EQ(map.getTileAt(0, 0), ETileType::PATH);
-    // 2=Target
     EXPECT_EQ(map.getTileAt(0, 1), ETileType::TARGET);
 }

@@ -6,4 +6,4 @@ enum class EGameEvent {
     LEVEL_RELOADED,
     LEVEL_WON,
 };
-#endif //SOKOBANGAME_EGAMEEVENT_H
+#endif

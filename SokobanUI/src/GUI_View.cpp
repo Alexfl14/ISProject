@@ -173,7 +173,7 @@ void GUI_View::drawPlayer(Position playerPos) {
 
     DrawCircle(center.x, center.y + playerSize/6, playerSize/3, _playerColor);
 
-    DrawCircle(center.x, center.y - playerSize/4, playerSize/4, /*Color{255, 220, 180, 255}*/ BROWN);
+    DrawCircle(center.x, center.y - playerSize/4, playerSize/4, BROWN);
 
     DrawCircle(center.x - playerSize/10, center.y - playerSize/4 - 2, 2, BLACK);
     DrawCircle(center.x + playerSize/10, center.y - playerSize/4 - 2, 2, BLACK);

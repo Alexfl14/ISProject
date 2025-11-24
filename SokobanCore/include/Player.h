@@ -8,4 +8,4 @@ public:
     Player(const Position& position) : GameObject(position) {}
 };
 
-#endif //SOKOBANGAME_PLAYER_H
+#endif

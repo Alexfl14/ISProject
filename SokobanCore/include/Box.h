@@ -8,4 +8,4 @@ public:
     Box(const Position& position) : GameObject(position) {}
 };
 
-#endif //SOKOBANGAME_BOX_H
+#endif

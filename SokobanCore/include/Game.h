@@ -40,4 +40,4 @@ private:
     EGameState _gameState;
 };
 
-#endif //ISPROJECT_GAME_H
+#endif

@@ -6,4 +6,4 @@ enum class EFacing {
     DOWN,
     RIGHT,
 };
-#endif //SOKOBANGAME_EFACING_H
+#endif

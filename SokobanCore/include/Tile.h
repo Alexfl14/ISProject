@@ -13,4 +13,4 @@ protected:
     ETileType _tileType;
 };
 
-#endif //SOKOBANGAME_TILE_H
+#endif

@@ -57,4 +57,4 @@ private:
     Vector2 getTileScreenPosition(int row, int col) const;
 };
 
-#endif //SOKOBANGAME_GUI_VIEW_H
+#endif

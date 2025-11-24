@@ -6,4 +6,4 @@ enum class ETileType {
     TARGET,
     WALL,
 };
-#endif //SOKOBANGAME_ETILETYPE_H
+#endif

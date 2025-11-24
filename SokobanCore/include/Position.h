@@ -23,4 +23,4 @@ protected:
     int _col;
 };
 
-#endif //SOKOBANGAME_POSITION_H
+#endif

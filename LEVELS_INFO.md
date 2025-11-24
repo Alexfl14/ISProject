@@ -152,12 +152,9 @@ Am creat 10 hărți Sokoban cu dificultate progresivă, în stil labirint. Fieca
 ### Observer Pattern:
 
 ```cpp
-// Când jucătorul câștigă:
 game.checkWinCondition() → true
 game.notify(LEVEL_WON)
 view.onNotify(LEVEL_WON) → "Press N for next level"
-
-// Când se apasă N:
 view.handleInput() → KEY_N
 view.loadNextLevel()
 game.loadLevel(nextLevel)

@@ -6,14 +6,8 @@ Game::Game() : _player(Position(0, 0)), _moveCount(0), _currentLevel(0), _gameSt
 void Game::loadLevel(int levelNumber) {
     _gameState = EGameState::LOADING;
     _currentLevel = levelNumber;
-    
-    // Load map from JSON
     _currentMap.load(levelNumber);
-    
-    // Initialize player
     _player.setPosition(_currentMap.getPlayerStart());
-    
-    // Initialize boxes
     _boxes.clear();
     std::vector<Position> boxPositions = _currentMap.getBoxPositions();
     for (const auto& pos : boxPositions) {
@@ -33,36 +27,23 @@ void Game::movePlayer(EFacing direction) {
     
     Position currentPos = _player.getPosition();
     Position nextPos = getNextPosition(currentPos, direction);
-    
-    // Check if next position is walkable
     if (!isPositionWalkable(nextPos)) {
-        return; // Can't move into wall
+        return;
     }
-    
-    // Check if there's a box at next position
     if (isBoxAt(nextPos)) {
-        // Try to push the box
         Position boxNextPos = getNextPosition(nextPos, direction);
-        
-        // Check if box can be pushed
         if (!isPositionWalkable(boxNextPos) || isBoxAt(boxNextPos)) {
-            return; // Can't push box
+            return;
         }
-        
-        // Move the box
         Box* box = getBoxAt(nextPos);
         if (box) {
             box->setPosition(boxNextPos);
             notify(EGameEvent::BOX_MOVED);
         }
     }
-    
-    // Move player
     _player.setPosition(nextPos);
     _moveCount++;
     notify(EGameEvent::PLAYER_MOVED);
-    
-    // Check win condition
     if (checkWinCondition()) {
         _gameState = EGameState::LEVEL_COMPLETED;
         notify(EGameEvent::LEVEL_WON);
@@ -95,16 +76,15 @@ void Game::notify(EGameEvent event) {
 }
 
 bool Game::checkWinCondition() {
-    // All boxes must be on target tiles
     for (const auto& box : _boxes) {
         Position boxPos = box.getPosition();
         ETileType tile = _currentMap.getTileAt(boxPos.getRow(), boxPos.getCol());
         
         if (tile != ETileType::TARGET) {
-            return false; // Box not on target
+            return false;
         }
     }
-    return true; // All boxes on targets
+    return true;
 }
 
 EGameState Game::getCurrentState() {
@@ -142,19 +122,13 @@ int Game::getMoveCount() {
     return _moveCount;
 }
 
-// Private helper methods
-
 bool Game::isPositionWalkable(const Position& pos) const {
     int row = pos.getRow();
     int col = pos.getCol();
-    
-    // Check bounds
     if (row < 0 || row >= _currentMap.getHeight() || 
         col < 0 || col >= _currentMap.getWidth()) {
         return false;
     }
-    
-    // Check if it's not a wall
     ETileType tile = _currentMap.getTileAt(row, col);
     return tile != ETileType::WALL;
 }

@@ -24,4 +24,4 @@ private:
     int _height;
 };
 
-#endif //ISPROJECT_GAMEMAP_H
+#endif
