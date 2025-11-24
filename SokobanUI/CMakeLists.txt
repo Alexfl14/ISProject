@@ -50,8 +50,16 @@ add_custom_command(TARGET SokobanUI POST_BUILD
 add_custom_command(TARGET SokobanUI POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
         ${CMAKE_SOURCE_DIR}/levels.json
+        $<TARGET_FILE_DIR:SokobanUI>/levels.json
+        COMMENT "Copying levels.json to executable directory"
+)
+
+# Also copy to output directory root for good measure
+add_custom_command(TARGET SokobanUI POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        ${CMAKE_SOURCE_DIR}/levels.json
         ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/levels.json
-        COMMENT "Copying levels.json to build directory"
+        COMMENT "Copying levels.json to runtime output directory"
 )
 
 # Installation rules
