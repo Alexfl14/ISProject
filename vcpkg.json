@@ -1,6 +1,7 @@
 {
   "name": "sokoban",
   "version-string": "1.0.0",
+  "builtin-baseline": "fca0e6b324d41da363b0e1dc33b0595491250a77",
   "dependencies": [
     "raylib",
     "nlohmann-json",

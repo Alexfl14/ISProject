@@ -36,12 +36,21 @@ else()
 endif()
 
 # 7. Register Tests
+if(UNIX AND NOT APPLE)
 include(GoogleTest)
 gtest_discover_tests(SokobanTests
     WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
     PROPERTIES
     LABELS "unit"
 )
+else()
+    include(GoogleTest)
+    gtest_discover_tests(SokobanTests
+            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+            PROPERTIES
+            LABELS "unit"
+    )
+endif()
 
 # REMOVED: The add_custom_command for copying test_data
 # Reason: You don't have a test_data folder, and your code generates its own levels.json.
